@@ -309,3 +309,5 @@ gradle-app.setting
 *.hprof
 
 # End of https://www.toptal.com/developers/gitignore/api/windows,kotlin,gradle,intellij,intellij+iml,intellij+all
+.idea/misc.xml
+.idea/gradle.xml
