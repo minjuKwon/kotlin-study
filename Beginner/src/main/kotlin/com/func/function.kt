@@ -1,4 +1,4 @@
-package com.variable
+package com.func
 
 fun main() {
 
