@@ -1,4 +1,4 @@
-package com.classAndObject
+package classAndObject.modifier
 
 internal class Internal {
     internal var num=1

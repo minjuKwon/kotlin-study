@@ -1,4 +1,4 @@
-package com.classAndObject
+package classAndObject.modifier
 
 fun main() {
 
@@ -12,7 +12,7 @@ fun main() {
 
     //같은 모듈에 있기에 자유롭게 접근 가능
     //현재 하나의 모듈을 가지기에 프로젝트 전체가 접근 범위라고 볼 수 있음
-    val v=Internal()
+    val v= Internal()
     v.num
     v.changeNum()
     v.getMethod()
@@ -21,7 +21,7 @@ fun main() {
 
 class InternalExample(){
     //val v1=Internal()//public형이라 internal 접근 불가능
-    internal val v2=Internal()
+    internal val v2= Internal()
     //v2.num
     //v2.getMethod()
     fun check(){
@@ -33,7 +33,7 @@ class InternalExample(){
 }
 
 fun a(){
-    val v=Internal()
+    val v= Internal()
     v.num
     v.changeNum()
     v.getMethod()

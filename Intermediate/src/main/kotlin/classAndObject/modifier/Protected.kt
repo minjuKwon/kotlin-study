@@ -1,4 +1,4 @@
-package com.classAndObject
+package classAndObject.modifier
 
 //최상위 클래스에는 protected 사용 불가능
 /*protected open class Device {

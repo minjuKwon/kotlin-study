@@ -1,4 +1,4 @@
-package com.classAndObject
+package classAndObject.modifier
 
 fun main() {
 
@@ -10,7 +10,7 @@ fun main() {
     * internal - 같은 모듈 내에서만 접근 가능
     * public - 어디서든 접근 가능(기본 값)*/
 
-    val a=Private()
+    val a= Private()
     //a.num //private 멤버 접근 불가능
     a.getMethod()
 
@@ -27,12 +27,12 @@ private class Private{
 class PrivateExample{
     //기본 값이 public 이라서 private 클래스 접근 불가능
     //val value=Private()
-    private val value=Private()//같은 private이기에 private 클래스에 접근 가능
+    private val value= Private()//같은 private이기에 private 클래스에 접근 가능
     //멤버 호출은 불가능
     //value.num 
     //value.getMethod()
     fun check(){
-        val p=Private()//로컬 변수이기에 private 클래스이라도 접근 가능
+        val p= Private()//로컬 변수이기에 private 클래스이라도 접근 가능
         //p.num //private 멤머 호출 불가능
         p.getMethod()
     }
@@ -41,7 +41,7 @@ class PrivateExample{
 //외부 함수에서도 private 클래스 생성과 메소드 접근 가능하기만 
 //private 멤버는 접근 불가능
 fun function(){
-    val p=Private()//로컬 변수이기에 생성 가능
+    val p= Private()//로컬 변수이기에 생성 가능
     //p.num
     p.getMethod()
 }

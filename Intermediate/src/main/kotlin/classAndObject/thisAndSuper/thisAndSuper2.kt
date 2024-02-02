@@ -1,4 +1,4 @@
-package com.classAndObject
+package classAndObject.thisAndSuper
 //인터페이스는 클래스가 어떻게 구현해야하는지 알려주는 가이드 역할
 //인터페이스 자체로는 객체가 아니라 이를 클래스에서 구현해야됨
 //한 클래스가 여러 인터페이스 구현 가능
@@ -18,7 +18,7 @@ open class B{
     open fun d()=println("B Class d()")
 }
 
-class C:A,B{
+class C: A, B {
     override val num:Int=super.num+1//현재 클래스에 상위 클래스 num에 1을 더한 값을 할당
     constructor() : super() {
 

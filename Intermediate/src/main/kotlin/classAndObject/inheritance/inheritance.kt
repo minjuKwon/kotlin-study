@@ -1,13 +1,17 @@
 package com.classAndObject
 
+import classAndObject.inheritance.Circle
+import classAndObject.inheritance.Rectangle
+import classAndObject.inheritance.Shape
+
 fun main() {
 
     /*상속 : 자식 클래스가 부모 클래스의 속성과 기능을 물려받음.
     부모 클래스 외의 프로퍼티와 메서드 추가 가능
     코틀린의 모든 클래스는 상위 클래스를 별도로 표시하지 않으면 Any 클래스를 상속.*/
-    val shape=Shape(2,4,"red")
-    val rectangle=Rectangle(10,10,"green")
-    val circle=Circle(20,20,"blue",5)
+    val shape= Shape(2,4,"red")
+    val rectangle= Rectangle(10,10,"green")
+    val circle= Circle(20,20,"blue",5)
 
     println("shape : ${shape.x}, ${shape.y}, ${shape.color}")
     shape.figure()
@@ -25,7 +29,7 @@ fun main() {
 
     //Up Casting: 하위 클래스 인스턴스를 상위 클래스 타입으로 선언. 상위클래스로 변환
     //상위 클래스 Shape 타입의 하위 클래스 Circle 생성
-    val c:Shape=Circle(28,28,"pink",2)
+    val c: Shape = Circle(28,28,"pink",2)
     //상위 클래스 타입이라도 하위 클래스 인스턴스를 참조하기에
     //오버라이딩 된 하위 클래스 Circle figure() 호출
     c.figure()

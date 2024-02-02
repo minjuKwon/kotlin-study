@@ -1,4 +1,4 @@
-package com.classAndObject
+package classAndObject.constructor
 
 /*//주 생성자 클래스 이름과 함께 생성자 정의
 //constructor 키워드 생략 가능

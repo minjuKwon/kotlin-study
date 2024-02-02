@@ -1,7 +1,7 @@
-package com.classAndObject
+package classAndObject.inheritance
 //open 키워드를 사용하지 않았기에 최종 클래스가 됨. 즉, 다른 클래스가 Rectangle 상속 불가능
 //주생성자를 이용한 상속
-class Rectangle(x:Int, y:Int, color:String):Shape(x,y,color) {
+class Rectangle(x:Int, y:Int, color:String): Shape(x,y,color) {
     //오버라이딩 : 상위 클래스 메서드 재정의. override 키워드 사용
     //오버라이딩에도 final, open 키워드 중복 사용 가능
     override fun figure() {

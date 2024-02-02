@@ -1,4 +1,4 @@
-package com.classAndObject
+package classAndObject.constructor
 
 class Bird2 {
 

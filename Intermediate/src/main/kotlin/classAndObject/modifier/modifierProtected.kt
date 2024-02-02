@@ -1,4 +1,4 @@
-package com.classAndObject
+package classAndObject.modifier
 
 fun main() {
 
@@ -10,7 +10,7 @@ fun main() {
     * internal - 같은 모듈 내에서만 접근 가능
     * public - 어디서든 접근 가능(기본 값)*/
 
-    val p=Protected()
+    val p= Protected()
     //p.num //protected 멤버 접근 불가능
     p.getMethod()//public이기에 접근 가능
 
@@ -25,7 +25,7 @@ class Example{
     }*/
 }
 
-class ProtectedExample:Protected(){
+class ProtectedExample: Protected(){
     //getMethod() //상속받아도 본문에 바로 사용 불가능
     fun check(){
         //로컬 영역에서 사용 가능

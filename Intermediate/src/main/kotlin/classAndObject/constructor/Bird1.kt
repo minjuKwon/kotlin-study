@@ -1,4 +1,4 @@
-package com.classAndObject
+package classAndObject.constructor
 
 /*내용이 비어있는 클래스 선언. */
 //class Bird{}

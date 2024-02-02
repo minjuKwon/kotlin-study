@@ -1,6 +1,7 @@
-package com.classAndObject
+package classAndObject.inheritance
+
 //부생성자를 이용한 상속
-class Circle:Shape {
+class Circle: Shape {
     var r:Int//추가 프로퍼티. 자신만의 프로퍼티 추가 가능
     constructor(x:Int, y:Int, color:String, r:Int) :super(x,y,color){
         this.r=r
