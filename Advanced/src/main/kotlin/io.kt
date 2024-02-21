@@ -1,4 +1,5 @@
 import java.io.File
+import java.io.FileReader
 import java.io.FileWriter
 import java.io.IOException
 import java.nio.file.Files
@@ -58,7 +59,7 @@ fun main() {
         FileWriter(path,true).use { it.write(text) }
     }catch (e:Exception){ }
 
-    /*출력*/
+    /*쓰기*/
 
     //PrintWriter: print(), printf(), println(), write() 등
     //자바에서 문자 기반의 다양한 출력 메소드 제공. null도 출력 가능.
@@ -83,5 +84,81 @@ fun main() {
     val file=File(path)
     file.writeText(text)
     file.appendText("append")
+
+    /*FileReader: 문자 스트림. File, Files 달리 바이트가 아닌 문자 단위로 출력. */
+    path="D:\\Study\\Kotlin\\newFile.txt"//파일 생성할 경로
+    try {
+        println(
+            FileReader(path)//파일 읽어올 경로
+                .readText()//버퍼 사용하는 StringWriter()호출하여 텍스트를 메모리로 가져온 후 내용 반환
+        )
+    }catch (e:Exception){ }
+    println()
+
+    /*읽기*/
+
+    //BufferedWriter: 버퍼를 사용해 출력. 메모리 특정 공간에 저장 후 파일로 저장.
+    println("BufferedWriter")
+    path="D:\\Study\\Kotlin\\bufferedWriter.txt"
+    println(
+        File(path).
+        bufferedReader()//자바의 BufferedReader 리턴
+            .use { it.readText() }
+    )
+    println()
+
+    //줄 단위 처리 시 use()대신 시퀀스 사용한 useLines() 이용 가능.
+    println("useLines()")
+    path="D:\\Study\\Kotlin\\newFile.txt"
+    val list= mutableListOf<String>()
+    //파일의 내용을 한 줄 씩 받아서 리스트에 삽입
+    File(path).bufferedReader().useLines { line->line.forEach { list.add(it) } }
+    list.forEach { println(it) }
+    println()
+    println("bufferedReader 생략")
+
+    //useLines에서 bufferedReader사용하기에 bufferedReader 생략 가능
+    File(path).useLines { line->line.forEach { list.add(it) } }
+    list.forEach { println(it) }
+    println()
+
+    //copyTo(): 파일 복사 처리. 복사할 파일에 버퍼 크기만큼씩 옮김. 덮어쓸 여부 결정 가능.
+    //버퍼 크기는 기본값, 덮어 쓸 여부는 false로 설정되어 생략 가능.
+    //복사할 대상은 파일만 가능. 파일 용량이 크면 블로킹 가능성 존재
+    val path2="D:\\Study\\Kotlin\\copyTo.txt"
+    File(path).copyTo(
+        File(path2),//복사할 파일
+        true,//덮어 쓸 여부
+        1024//버퍼 크기
+    )
+
+    //파일 내용 출력
+    println("파일 출력")
+    File(path).forEachLine { println(it) }
+    println()
+
+    //바이트 단위로 읽기. writeBytes()도 존재
+    println("바이트 단위")
+    println(
+        File(path).readBytes().contentToString()
+    )
+    println()
+
+    //줄 단위로 읽기
+    println("줄 단위")
+    println(
+        File(path).readLines()
+    )
+    println()
+
+    //텍스트 단위로 읽기.
+    println("텍스트 단위")
+    println(
+        File(path).readText()
+    )
+    println()
+
+    /*데이터의 양이 적을 때는 readBytes, readLines, readText 같이 read~ 계열 함수 사용 권장.
+   양이 많을 때는 copyTo, forEachBlock, forEachBlock, forEachLine 같은 Api 사용 권장*/
 
 }
