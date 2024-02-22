@@ -4,8 +4,9 @@ import java.math.BigInteger
 
 fun main() {
     
-    /*꼬리 재귀 : 재귀 함수를 컴파일 때 반복문,while로 변경. tailrec 사용
-    * 스택 오버플로우에 안전*/
+    /*꼬리 재귀 : 재귀를 계속 호출하여 스택에 쌓이는 형태가 아닌, 꼬리를 무는 형태.
+    컴파일 때 반복 코드로 변환됨. 호출 스택 재사용이 가능해짐. 키워드 tailrec 사용.
+    단, 재귀 호출 코드 다음에 다른 실행 코드 있으면 안됨. 스택 오버플로우에 안전*/
 
     println(factorial1(10L))
     println(factorial2(10L))
