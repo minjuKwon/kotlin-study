@@ -50,6 +50,9 @@ fun main() {
     }
     println()
 
+    /*자바에서는 예외가 checked, unchecked 으로 나뉜다. checked 예외는 반드시 처리해야하는 예외,
+    unchecked 예외는 프로그래머가 알아서 처리하는 예외. 코틀린에는 나뉘지 않고 unchecked 형태의 예외만 존재.*/
+
 }
 
 fun printLen(str:String?){
