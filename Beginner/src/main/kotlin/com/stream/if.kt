@@ -73,4 +73,6 @@ fun main() {
     }
     println("점수 : $score3 -> 등급 : $grade3")
 
+    /*코틀린에는 삼항 연산자 지원 X*/
+
 }
