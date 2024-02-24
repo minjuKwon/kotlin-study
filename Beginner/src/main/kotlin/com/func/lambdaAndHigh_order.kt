@@ -1,7 +1,4 @@
 package com.func
-
-import java.util.concurrent.locks.ReentrantLock
-
 fun main() {
 
     /*함수형 프로그래밍 : 순수 함수를 사용하여 부작용을 줄이는 기법
@@ -86,6 +83,20 @@ fun main() {
     lambdas({"a:$it"},{x,y->" x:$x,y:$y"})
     lambdas({"a:$it"}){x,y->" x:$x,y:$y"}
 
+    /*클로저: 람다식, 익명함수의 내부함수에서 외부 범위에 선언된 변수에 접근 가능.
+    외부 변수에 대한 참조가 유지되어 함수가 종료되어도 사라지지 않고 계속 접근, 수정 가능.
+    람다식에 있는 외부 변수는 값을 유지하기 위해 람다식에 캡쳐, 포획된 변수라 칭함.
+    기본적으로 final인 변수만 포획 가능하기에 아닌 경우 내부적으로 변환함.
+    */
+    var result=5//외부 변수, 캡쳐된 변수
+    funClosure(1){x-> result += x }
+    //함수가 종료되어도 6값 유지
+    println("result : $result")
+    funClosure(2){x-> result += x }
+    //result 원본 값인 5에 2가 더한 값이 아닌
+    //위의 계산 값인 6에서 2를 더한 값을 보여줌
+    println("result : $result")
+
 }
 
 /*순수 함수 : 항상 같은 결과를 반환하여 부작용이 없어 예측 가능한 함수
@@ -141,4 +152,9 @@ fun lambdaWithArgs(a:String, b:String,str:(String,String)->String){
 fun lambdas(one:(String)->String, two:(String,String)->String){
     println(one("Good"))
     println(two("Good","Day"))
+}
+
+/*클로저*/
+fun funClosure(x:Int, add:(Int)->Unit){
+    add(x)
 }
