@@ -1,4 +1,4 @@
-package com.classAndObject
+package classAndObject.constructor
 
 import classAndObject.constructor.Bird1
 import classAndObject.constructor.Bird2
@@ -6,8 +6,8 @@ import classAndObject.constructor.Bird3
 
 fun main() {
 
-    /*객체 지향 프로그램 : 객체를 모델링하여 객체 간 상호작용으로 표현 확장과 재활용에 유리.
-    객체를 속성과 동작을 정의하며 추상화함. 과정대형 소프트웨어에 적합*/
+    /*객체 지향 프로그램 : 객체를 모델링하여 객체 간 상호작용으로 표현. 확장과 재활용에 유리.
+    객체를 속성과 동작을 정의하며 추상화함. 대형 소프트웨어에 적합*/
     
     /*클래스 : 객체 생성 틀. 틀이기에 실제 메모리에 존재 X*/
 
