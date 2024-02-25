@@ -1,6 +1,8 @@
 package propertyAndInit
 
 import kotlin.properties.Delegates
+import kotlin.properties.ReadWriteProperty
+import kotlin.reflect.KProperty
 
 fun main() {
 
@@ -46,6 +48,18 @@ fun main() {
     salary=300//새로 할당한 300이 기본 값보다 적어졌기에 300이 아닌 400 출력
     println(salary)
 
+    /*ReadWriteProperty: 프로퍼티 setter, getter 위임. 즉, 똑같은 로직의 setter, getter 가진다면
+    * ReadWriteProperty를 통해 설정하여 위임할 수 있음. observable(), vetoable() 모두 ReadWriteProperty 반환*/
+    var cash by Range(initialValue = 1000, minValue = 0, maxValue = 10000)
+    //값 범위를 가진 setter의 최대값을 넘었기에
+    //최초값에서 변화 없음
+    cash=12000
+    println("cash: $cash")
+    //값 범위 안으로 설정하였기에
+    //바뀐 값이 할당
+    cash=8000
+    println("cash: $cash")
+
 }
 
 interface Shape{
@@ -71,5 +85,20 @@ class Essay(val type:String):Book{
 class Literature(val name:String, book:Book): Book by book{
     fun info(){
         println("$name - ${getBookType()}")//참조 없이 바로 getBookType() 접근 가능
+    }
+}
+
+class Range(
+    var initialValue:Int,
+    private val minValue:Int,
+    private val maxValue:Int
+):ReadWriteProperty<Any?,Int>{
+    override fun getValue(thisRef: Any?, property: KProperty<*>): Int {
+        return initialValue
+    }
+    override fun setValue(thisRef: Any?, property: KProperty<*>, value: Int) {
+        if(value in minValue..maxValue){
+            initialValue=value
+        }
     }
 }
