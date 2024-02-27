@@ -138,12 +138,12 @@ fun main() {
     println("arr6 내림: "+Arrays.toString(arr6))
     println("sortedArrayDesc 내림: "+Arrays.toString(sortedArrayDesc))
 
-    arr6.sort(2,5)//특정 인덱스 구간의 오름차순 원본 배열 정렬. 두 번째 인덱스는 포함 X. 실제로 2~3 구간 배열
+    arr6.sort()//원본 배열 오름차순 정렬
+    println("arr6 오름: "+Arrays.toString(arr6))
+    arr6.sort(2,5)//특정 인덱스 구간의 오름차순 원본 배열 정렬. 두 번째 인덱스는 포함 X. 실제로 2~4 구간 배열
     println("arr6[2..5] 오름: "+Arrays.toString(arr6))
     arr6.sortDescending()//원본 배열 내림차순 정렬
     println("arr6 내림: "+Arrays.toString(arr6))
-    arr6.sort()//원본 배열 오름차순 정렬
-    println("arr6 오름: "+Arrays.toString(arr6))
     arr6.sortDescending(1,5)//특정 인덱스 구간의 내림차순 원본 배열 정렬. 두 번째 인덱스는 포함 X. 실제로 1~4 구간 배열
     println("arr6[1..5] 내림: "+Arrays.toString(arr6))
 
