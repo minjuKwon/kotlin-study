@@ -24,6 +24,7 @@ fun main() {
     val setMixed= setOf("1",2,3,"4")
     val set:Set<Int> = setOf(1,2,3,3,4,5,5)
     println(set)//중복 요소 제거
+    println(set.javaClass.canonicalName)
 
     //Collection 멤버
     println("set size: ${set.size}")//set 크기
@@ -37,6 +38,7 @@ fun main() {
     /*가변형 Set. mutableSetOf() 헬퍼 함수로 가변형 Set 생성.
     MutableSet 반환하지만 내부적으로 자바의 LinkedHashSet 생성*/
     val setMutable: MutableSet<Int> = mutableSetOf(1,2,3,4,5)
+    println(setMutable.javaClass.canonicalName)
 
     //Collection 멤버
     println("setMutable size: ${setMutable.size}")//set 크기
@@ -73,6 +75,7 @@ fun main() {
     다만 해시 값으로 요소를 찾아 검색 속도는 O(1)*/
     val hashSet : HashSet<Int> = hashSetOf(3,2,1,4,5)
     println(hashSet)
+    println(hashSet.javaClass.canonicalName)
     hashSet.add(6)//변경 가능
     hashSet.remove(1)
     println(hashSet)
@@ -86,6 +89,7 @@ fun main() {
     */
     val treeSet: TreeSet<Int> = sortedSetOf(7,1,2,4)
     println(treeSet)
+    println(treeSet.javaClass.canonicalName)
     treeSet.add(6)//변경 가능
     treeSet.remove(1)
     println(treeSet)
@@ -98,6 +102,7 @@ fun main() {
     */
     val linkedSet: LinkedHashSet<Int> = linkedSetOf(8,5,2,4)
     println(linkedSet)
+    println(linkedSet.javaClass.canonicalName)
     linkedSet.add(6)//변경 가능
     linkedSet.remove(4)
     println(linkedSet)
