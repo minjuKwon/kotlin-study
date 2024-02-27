@@ -11,6 +11,7 @@ fun main() {
         print("$num ")
     }
     println()
+    println(nums1.javaClass.canonicalName)
     val nums2=Array(3,{i->i+2})//배열크기, 초깃값(표현식).
     for(num in nums2){
         print("$num ")
@@ -20,12 +21,14 @@ fun main() {
     for(num in nums3){
         print("$num ")
     }
+    println(nums3.javaClass.canonicalName)
     println()
     val nums4=arrayOfNulls<Int>(3)//null로 초기화된 int 배열
     for(num in nums4){
         print("$num ")
     }
     println()
+    println(nums4.javaClass.canonicalName)
     println()
 
     /*다차원 배열. 2차원 이상의 배열*/
@@ -40,6 +43,7 @@ fun main() {
         }
         println()
     }
+    println(arrs1.javaClass.canonicalName)
     println()
     val arr3rd= arrayOf(arrs1, arrs2)
 
@@ -51,6 +55,7 @@ fun main() {
     /*배열 자료형*/
     //혼합 자료형 배열
     val arrMix=arrayOf(1,2,"3","4",true)
+    println(arrMix.javaClass.canonicalName)
     //자료형 제한 배열
     val arrInt1=arrayOf<Int>(5,6)
     //내부적으로 기본형 배열 생성
@@ -59,6 +64,7 @@ fun main() {
     //Any형 배열. 자료형이 지정된 배열은 다른 자료형으로 변환 불가.
     //Any형 배열은 다른 자료형 지정 가능
     val arrAny=arrayOf<Any>(2,2,1)
+    println(arrAny.javaClass.canonicalName)
     arrAny[0]="1"
     arrAny[2]=3.14
 
@@ -149,6 +155,7 @@ fun main() {
 
     val sorted:List<Int> = arr6.sorted()//리스트로 반환하며 오름차순 정렬
     println("list: "+sorted)
+    println(sorted.javaClass.canonicalName)
     val sortedDesc:List<Int> = arr6.sortedDescending()//리스트로 반환하며 내림차순 정렬
     println("sortedDesc: "+sortedDesc)
 
@@ -169,6 +176,7 @@ fun main() {
     )
     coffees.sortBy { it.price }//가격순으로 정렬. 매개변수가 람다로 받아 소괄호 생략 가능
     coffees.forEach { println(it) }//매개변수가 람다로 받아 소괄호 생략 가능
+    println(coffees.javaClass.canonicalName)
     println()
 
     coffees=arrayOf(
