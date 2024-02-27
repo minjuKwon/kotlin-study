@@ -15,6 +15,7 @@ fun main() {
     /*불변형 Map. mapOf() 헬퍼 함수로 불변형 Set 생성.
     size, keys, values, isEmpty(), containsKey(), containsValue(), get()등을 가짐*/
     val map: Map<String, Int> = mapOf("가" to 1, "나" to 2, "다" to 3, "라" to 4, "마" to 5)
+    println(map.javaClass.canonicalName)
     
     println("map.size: ${map.size}")//map 크기
     println("map.isEmpty(): ${map.isEmpty()}")//map 비어있으면 true
@@ -33,6 +34,7 @@ fun main() {
     /*가변형 Map. mutableMapOf() 헬퍼 함수로 가변형 Set 생성.
     put(), remove(), putAll(), clear() 등을 가짐*/
     val mutable : MutableMap<Int, String> = mutableMapOf(1 to "가", 2 to "나", 3 to "다", 4 to "라", 5 to "마")
+    println(mutable.javaClass.canonicalName)
 
     println("mutable.size: ${mutable.size}")//map 크기
     println("mutable.isEmpty(): ${mutable.isEmpty()}")//map 비어있으면 true
@@ -63,6 +65,7 @@ fun main() {
     다만 해시 값으로 요소를 찾아 검색 속도는 O(1)*/
     val hashMap : HashMap<Int, String> = hashMapOf(1 to "A", 2 to "B", 3 to "C")
     println(hashMap)
+    println(hashMap.javaClass.canonicalName)
     hashMap.put(4, "D")//변경 가능
     hashMap.remove(1)
     println(hashMap)
@@ -74,6 +77,7 @@ fun main() {
     */
     val treeMap: SortedMap<Int, String> = sortedMapOf(4 to "D", 5 to "E", 6 to "F")
     println(treeMap)
+    println(treeMap.javaClass.canonicalName)
     treeMap.put(7, "G")//변경 가능
     treeMap.remove(4)
     println(treeMap)
@@ -86,6 +90,7 @@ fun main() {
     */
     val linkedMap: LinkedHashMap<Int, String> = linkedMapOf(7 to "G", 8 to "H", 9 to "I")
     println(linkedMap)
+    println(linkedMap.javaClass.canonicalName)
     linkedMap.put(10, "J")//변경 가능
     linkedMap.remove(8)
     println(linkedMap)
