@@ -23,6 +23,7 @@ fun main() {
     //listNum.add(4)//불변형이기에 추가 불가능s
     for(num in listNum)print("$num ")
     println()
+    println(listNum.javaClass.canonicalName)
     val listMixed = listOf(1,"Hi",2)//Any 타입
     for(value in listMixed)print("$value ")
     println()
@@ -84,7 +85,8 @@ fun main() {
     //arrayListOf
     val array: ArrayList<Int> = arrayListOf(1,2,3,4,5,2)
     val arrayMixed= arrayListOf("1",2,3,"4")
-    
+    println(array.javaClass.canonicalName)
+
     //Collection 멤버
     println("array size: ${array.size}")//list 크기
     println("array.isEmpty(): ${array.isEmpty()}")//list가 비어있으면 true
@@ -125,6 +127,7 @@ fun main() {
     //mutableListOf
     val mutable:MutableList<String> = mutableListOf("가", "나", "다", "라", "마", "바", "사","나")
     val mutableMixed = mutableListOf("가", 1, "다", 3, "마", 5, "사")
+    println(mutable.javaClass.canonicalName)
 
     //Collection 멤버
     println("mutable size: ${mutable.size}")//list 크기
