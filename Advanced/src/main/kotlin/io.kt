@@ -79,26 +79,29 @@ fun main() {
 
     //감싼 메서드: 기존 메서드를 기능을 추가하여 감싼 메서드.
     //writeText(), appendText(). 내부적으로 use()사용하여 close() 호출 불필요.
+    //내부적으로 바이트 배열로 변환
     path="D:\\Study\\Kotlin\\write.txt"
     text="writeText\n"
     val file=File(path)
-    file.writeText(text)
-    file.appendText("append")
+    file.writeText(text)//writeBytes()사용
+    file.appendText("append")//appendBytes() 사용
 
     /*FileReader: 문자 스트림. File, Files 달리 바이트가 아닌 문자 단위로 출력. */
     path="D:\\Study\\Kotlin\\newFile.txt"//파일 생성할 경로
     try {
         println(
             FileReader(path)//파일 읽어올 경로
-                .readText()//버퍼 사용하는 StringWriter()호출하여 텍스트를 메모리로 가져온 후 내용 반환
+                //버퍼 사용하는 StringWriter()호출하여 텍스트를 메모리로 가져온 후 내용 반환
+                //StringWriter()는 StringBuffer() 호출하는데 이는 i/o 보다 문자열 조작을 위한 버퍼 클래스.
+                .use { it.readText() }
         )
     }catch (e:Exception){ }
     println()
 
     /*읽기*/
 
-    //BufferedWriter: 버퍼를 사용해 출력. 메모리 특정 공간에 저장 후 파일로 저장.
-    println("BufferedWriter")
+    //BufferedReader: 버퍼를 사용해 읽기. 메모리 특정 공간인 버퍼에 저장 후 파일을 읽음.
+    println("BufferedReader")
     path="D:\\Study\\Kotlin\\bufferedWriter.txt"
     println(
         File(path).
