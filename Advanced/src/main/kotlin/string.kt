@@ -16,7 +16,7 @@ fun main() {
     /*추출*/
     println(greeting2.substring(2..4))//인덱스 범위 문자 추출
     //문자열은 메모리가 고정되어 특정 인덱스 수정 불가능.
-    // 기존 문자열에 특정 문자를 업데이트하고 병합하여 재할당하면 수정 가능
+    //기존 문자열에 특정 문자를 업데이트하고 병합하여 재할당하면 수정 가능
     //기존 문자열의 내용(안녕하겠냐)은 GC에 의해 제거됨
     greeting2=greeting2.substring(0..1)+" 후.. "+greeting2.substring(3..greeting2.length-1)
     println(greeting2)
@@ -30,11 +30,11 @@ fun main() {
     println()
 
     /*stringBuilder: 기존 문자열보다 메모리 공간이 더 큼. 그렇기에 특정 문자 변경 가능.
-    단어 변경이 없으면 임시 공간인 메모리 낭비. 문자열이 자주 변경되는 경우에 사용. 단, 처리 속도 느림*/
+    단어 변경이 없으면 임시 공간인 메모리 낭비. 큰 문자열이 자주 변경되는 경우에 사용.
+    문자열 + 연산자 사용할 때 내부적으로 stringBuilder 사용.*/
     val stringBuilder=StringBuilder("안녕하뭅니까")
     stringBuilder[3]='십'
     println(stringBuilder)
-    //append()는 생성된 버퍼를 사용하므로 + 연산자로 새로운 객체 생성하여 처리 권장.
     stringBuilder.append(" 여러분")//문자열 추가.
     println(stringBuilder)
     stringBuilder.insert(0, "오늘도 ")//추가할 문자열 위치 인덱스 지정
