@@ -3,11 +3,14 @@ package collection
 fun main() {
 
     /*시퀀스 : 요소의 크기를 나중에 결정할 수 있는 순차적인 컬렉션.
-    중간 처리 없이 마지막 메소드 때 모든 연산 계산 처리. */
+    중간 처리 없이 마지막 메소드 때 모든 연산 계산 처리. 시퀀스를 생성할 때는 sequenceOf(),
+    람다로 표현식이 필요할 때는 generateSequence(), 시퀀스로 변환할 때는 asSequence() 사용.
+    단 generateSequence()는 null 반환까지 무한히 요소를 생성하기에 유한할 수 있는 조건 필요
+    */
 
     //시드 값 = 초기 값. 람다식으로 다음 요소들 정의.
     //즉, 1로 시작하고 2배씩 커지는 시퀀스 정의.
-    val numbers:Sequence<Int> = generateSequence(1){it*2}
+    val numbers:Sequence<Int> = generateSequence(1){if(it<10) it*2 else null}
     println(numbers.take(5).toList())
     println()
 
@@ -30,7 +33,7 @@ fun main() {
 
     //시퀀스 메서드 체이닝
     //toList() 때 모든 연산이 수행되어 새로운 리스트 반환.
-    //즉, map()과 filter()가 연속적으로 수행
+    //즉, map()과 filter()가 연속적으로 수행. 중간 연산을 지연시킴.
     val result2=list.asSequence()
         .map { println("map($it)");it*3 }
         .filter { println("filter($it)"); it%2==1 }
