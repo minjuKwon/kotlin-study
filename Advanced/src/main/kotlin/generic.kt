@@ -29,8 +29,8 @@ fun main() {
     /*형식 매개변수는 null 허용*/
     drink3.isSame(1,2)
     val drink6=Drink<Int?>(1,null)
-    //Any 타입일 때는 null 지정 불가능
     drink6.isSame(null,3)
+    //Any 타입일 때는 null 지정 불가능
     val drink7=Drink<Any>(1)
     //drink7.isSame(null)
     println()
@@ -81,6 +81,8 @@ fun main() {
     /*공변성 : T'가 T의 하위 자료형이면 C<T'>는 C<T>의 하위 자료형.
     생산자 입장의 out 성질. class C<out T>로 정의하면 C<Int>는 C<Number>의 하위 자료형
     인스턴스 자료형의 상하 관계가 그대로 형식 매개변수 관계형식로 이어지는 경우. get 때 out 지정되어야함.
+    만약 Any 자료형 선언한 변수에 Any 상속받는 Int 자료형의 인스턴스를 할당한다고 했을 때, 같은 Any 상속 받은 String의 값으로
+    변경할 수 있기 때문에 setter 불가능. getter만 가능해짐
     */
     val c3:C2<Any> = C2<Int>(3)//Any의 하위 클래는 Int이므로 할당 가능
     //val c4:C2<Nothing> = C2<Int>(4)//Nothing의 하위 클래스는 Int가 아니므로 할당 불가능
@@ -89,6 +91,9 @@ fun main() {
     /*반공변성 : T'가 T의 하위 자료형이면 C<T>는 C<T'>의 하위 자료형.
     소비자 입장의 in 성질. class C<in T>로 정의하면 C<Number>가 C<Int>의 하위 자료형.
     인스턴스와 자료형 상하 관계가 반대가 되는 경우. set 때 in 지정되어야함.
+    결국 상위 클래스를 받기 때문에 getter 하면 추상적인 멤버를 받을 수도 있음.
+    또한 String 자료형 선언한 변수에 Any 자료형의 인스턴스를 할당한다고 했을 때,
+    인스턴스의 멤버를 얻을 때 String이 아닌 Any형이 되기에 형변환 과정에 오류 발생 가능함.
     */
     //val c6:C3<Any> = C3<Int>(6)// Any가 Int의 하위가 아니기에 할당 불가능
     val c7:C3<Int> = C3<Any>(7)
@@ -170,8 +175,8 @@ fun <K,V> find(key:K, value:V){}
 
 /*제네릭 메소드 연산*/
 //자료형을 알 수 없기에 연산 불가능
-//fun <T>sum(num1:T, num2:T):T{
-//    return a+b
+//fun <T>sum(num1:T, num1:T):T{
+//    return num1+num1
 //}
 //람다식을 사용하면 람다식을 넘겨줄 때 내용이 전달되기에 연산 가능
 fun <T>sum1(num1:T, num2:T, lam:(T,T)->T):T{
@@ -198,7 +203,7 @@ interface Blue
 class Purple:Red,Blue
 class Pink:Red
 //여러 형식 매개변수를 받고 싶을 때는 where 키워드 사용
-//지정된 자료형을 모드 포함한 경우만 허용
+//지정된 자료형을 모두 포함한 경우만 허용
 class Color<T> where T:Red, T:Blue
 fun <T> isBigger(num1:T, num2:T):T where T:Number, T:Comparable<T>{
     return if(num1>num2) num1 else num2
@@ -211,6 +216,10 @@ class C1<T>(val count:Int)
 class C2<out T>(val count:Int)
 //반공변성
 class C3<in T>(val count:Int)
+//class C4<in T>(val count:T)
+//반공변성에서는 public 안되기에 private 사용 필요
+//외부에서 접근하여 값을 변경하여 타입 안정성을 해치기 때문.
+class C4<in T>(private val count:T)
 
 open class Cookie(val count:Int){
     fun cook()=println("Cooking")
