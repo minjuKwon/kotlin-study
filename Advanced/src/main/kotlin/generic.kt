@@ -236,7 +236,7 @@ class Snack<out T:Cookie>(val num:T){
 }
 
 /*스타 프로젝션*/
-class InOut<in T, out S>(_t:T, _s:S){
+class InOut<in T, out S>(t:T, _s:S){
     //val t:T=_t//in이기에 out위치인 할당 불가능
     val u:S=_s
     fun infoT(t:T){
