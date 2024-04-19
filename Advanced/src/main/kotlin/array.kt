@@ -4,7 +4,7 @@ fun main() {
 
     /*배열 : 데이터를 연속적으로 나열한 형태. 코틀린에서는 동일한 자료형뿐만 아니라
     여러 자료형으로 구성가능. 배열 이름은 메모리 주소를 의미.*/
-    
+
     val nums1=arrayOf(1,2,3)
     println(nums1)
     for(num in nums1){
@@ -51,7 +51,7 @@ fun main() {
     val arrFlatten=arrs1.flatten()
     println(arrFlatten)
     println()
-    
+
     /*배열 자료형*/
     //혼합 자료형 배열
     val arrMix=arrayOf(1,2,"3","4",true)
@@ -127,7 +127,7 @@ fun main() {
 
     arrReversal.fill(1)//배열의 모든 요소를 특정 값으로 대체
     println(Arrays.toString(arrReversal))
-    
+
     println(arrReversal.contains(3))//배열에 특정 값 포함 여부 확인
     println(1 in arrReversal)//배열에 특정 값 포함 여부 확인
     when{

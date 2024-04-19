@@ -1,4 +1,5 @@
-import kotlin.reflect.KClass
+import kotlin.reflect.full.createInstance
+import kotlin.reflect.full.functions
 
 fun main() {
 
@@ -46,7 +47,7 @@ fun main() {
     val lam2:(Int,Int)->Int={a,b->a+b}
     println(sum2(3,4,lam2))
     println()
-    
+
     /*특정 자료형으로 제한*/
     val a1=A<Int>()
     println(a1.double(1))
@@ -65,7 +66,7 @@ fun main() {
     //println(isBigger(1,"2"))
     println()
 
-    /*가변성 : 형식 매개변수가 클래스 계층에 주는 영향. 
+    /*가변성 : 형식 매개변수가 클래스 계층에 주는 영향.
     Int는 클래스이면서 자료형. null을 가지는 Int?는 자료형. 클래스는 아님.
     Int는 Number의 하위 클래스. Int?는 Int의 하위 자료형.
     비슷하게 List는 클래스이지만 List<Int>는 자료형.
@@ -131,12 +132,29 @@ fun main() {
     val result2:Float=funReified<Float>(10)
     println(result1)
     println(result2)
+    println()
 
-    /*Class<T>는 자바에서 .class 형태로 반환 받는 객체. 패키지 이름, 메서드, 필드 등 클래스에 대한 메타 데이터를 가짐.즉, 리플렉션.
+    /*Class<T>는 자바에서 .class 형태로 반환 받는 객체. 패키지 이름, 메서드, 필드 등 클래스에 대한 메타 데이터를 가짐. 즉, 리플렉션.
     코틀린에서는 KClass로 나타내며 Object::class로 표현. 자바의 Class와 코틀린의 KClass는 완전히 동일하지 않아 자바의 Class를 가지려면
     Object::class.java로 표현. KClass는 실행시간 시점에 사용되는 자신의 구조와 행위를 관리하고 수정.
     Type Introspection이라는 실행시간에 자료형을 결정할 수 있는 능력을 가짐.*/
-    println(Object::class.isInner)//별다른 메소드없이 바로 호출 가능
+
+    println(Object::class.isInner)//메타 데이터를 가지기에 클래스 타입 확인 가능
+
+    //리플렉션을 통해 어떤 클래스로부터 함수 이름 직접 작성하지 않고 호출 가능
+    val className1 = "Reflection1"
+    val className2 = "Reflection2"
+    val funName = "Fun"
+    //Class.forName()를 통해 Class<T>, 클래스 타입 얻기
+    val kClass1 = Class.forName(className1).kotlin
+    val kClass2 = Class.forName(className2).kotlin
+    //얻은 클래스 타입으로 함수 호출
+    val instance1 = kClass1.createInstance()
+    val instance2 = kClass2.createInstance()
+    val function1 = kClass1.functions.find { it.name == funName }
+    val function2 = kClass2.functions.find { it.name == funName }
+    function1?.call(instance1)
+    function2?.call(instance2)
 
 }
 
@@ -262,6 +280,9 @@ fun <T> funClassT(c: Class<T>, value:Number):T{
     }
 }
 inline fun<reified T> funReified(value:Number):T{
+    //다만 타입은 결국 자바에서 가지고 오기 때문에
+    //이 부분에서 T::class, T::class.java 는 내용상에서 차이가 없다.
+    //그렇기에 둘 다 class java.lang.Float 출력.
     println(T::class)//KClass
     println(T::class.java)//Class
     return when(T::class){
@@ -269,5 +290,17 @@ inline fun<reified T> funReified(value:Number):T{
         Float::class->value.toFloat() as T
         Double::class->value.toDouble() as T
         else -> throw Exception("지원하지 않는 자료형입니다.")
+    }
+}
+
+/*리플렉션*/
+class Reflection1 {
+    fun Fun() {
+        println("Reflection1 - Fun")
+    }
+}
+class Reflection2{
+    fun Fun(){
+        println("Reflection2 - Fun")
     }
 }

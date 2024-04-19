@@ -16,7 +16,7 @@ fun main() {
     size, keys, values, isEmpty(), containsKey(), containsValue(), get()등을 가짐*/
     val map: Map<String, Int> = mapOf("가" to 1, "나" to 2, "다" to 3, "라" to 4, "마" to 5)
     println(map.javaClass.canonicalName)
-    
+
     println("map.size: ${map.size}")//map 크기
     println("map.isEmpty(): ${map.isEmpty()}")//map 비어있으면 true
     println("map.keys: ${map.keys}")//map 모든 키

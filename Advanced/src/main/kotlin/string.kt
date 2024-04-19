@@ -62,7 +62,7 @@ fun main() {
     println("456".toIntOrNull())//숫자가 아닌 값이 있으면 null를 반환하기에 오류 처리 불필요
     println("789!".toIntOrNull())
     println()
-    
+
     /*리터럴 문자열*/
     println("\t \"\'oh\' hello\n 4\$\" ")
     println("\uAC00")//유니코드. 16진수
@@ -74,7 +74,7 @@ fun main() {
     """.trimMargin()//특정 문자 기준으로 공백 제거. |는 디폴트
     println(test)
     println()
-    
+
     /*형식 문자 사용*/
     println("%.2f is perfect number. %s says, It is %b".format(3.1415,"Smith",true))
 

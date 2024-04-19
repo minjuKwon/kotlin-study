@@ -51,7 +51,7 @@ fun main() {
     val student1=Student("Mina",21)
     val result1=student1.apply {
         this.name="Nima"//student를 this로 받아와 접근. 원본 객체에 반영되고
-                        // 다시 이 객체를 this로 접근 가능
+        // 다시 이 객체를 this로 접근 가능
         age=22//this 생략하여 접근 가능. 초기화에 편리
         "End"
     }
@@ -123,7 +123,7 @@ fun main() {
     }
     println("Nano: $result7 ns")
     println()
-    
+
     /*난수 측정*/
     println("난수: ${Random.nextInt(10)}")//0~10 난수
 

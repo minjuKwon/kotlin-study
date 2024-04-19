@@ -206,7 +206,7 @@ fun main() {
     println("mapEmpty.none(): ${mapEmpty.none()}")
     println("mapEmpty.isEmpty(): ${mapEmpty.isEmpty()}")
     println()
-    
+
     /*필터*/
     println("=====필터=====")
     //람다식 처리에 따른 추출 후 반환 값 얻음.
@@ -312,7 +312,7 @@ fun main() {
     //각 인덱스와 값에 람다식에 따라 처리하여 컬렉션으로 반환.
     println("list3.mapIndexed{index, i -> index*i }: ${list3.mapIndexed{index, i -> index*i }}")
     println("set3.mapIndexed{index, i -> index*i }: ${set3.mapIndexed{index, i -> index*i }}")
-    
+
     //각 요소에 람다식을 적용하여 생긴 여러 컬렉션들을 다시 하나의 컬렉션으로 합침.
     //람다에는 listOf()나 toList()같이 Iterator를 가진 객체를 넘겨야 함.
     //반환된 컬렉션의 크기와 구조는 원본과 다를 수 있음.
@@ -339,7 +339,7 @@ fun main() {
     println("list3.partition { it%2==0 }: ${list3.partition { it%2==0 }}")
     println("set3.partition { it%2==0 }: ${set3.partition { it%2==0 }}")
     println()
-    
+
     //두 개의 컬렉션에서 동일한 인덱스끼리 Pair으로 반환. 두 컬렉션 크기가 다를 경우, 요소가 작은 컬렉션 인덱스에 맞춰서 구성. map 사용X
     println("list3.zip(listOf(1,2)): ${list3.zip(listOf(1,2))}")
     println("set3.zip(setOf(1,2,3,4)): ${set3.zip(setOf(1,2,3,4))}")
