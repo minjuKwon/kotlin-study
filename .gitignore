@@ -313,3 +313,6 @@ gradle-app.setting
 .idea/gradle.xml
 Beginner/.idea/uiDesigner.xml
 Intermediate/.idea/misc.xml
+Beginner/.idea/misc.xml
+Advanced/.idea/gradle.xml
+Advanced/.idea/workspace.xml
