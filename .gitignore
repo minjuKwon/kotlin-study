@@ -311,8 +311,6 @@ gradle-app.setting
 # End of https://www.toptal.com/developers/gitignore/api/windows,kotlin,gradle,intellij,intellij+iml,intellij+all
 .idea/misc.xml
 .idea/gradle.xml
-Beginner/.idea/uiDesigner.xml
-Intermediate/.idea/misc.xml
-Beginner/.idea/misc.xml
-Advanced/.idea/gradle.xml
-Advanced/.idea/workspace.xml
+/Beginner/.idea
+/Intermediate/.idea
+/Advanced/.idea
